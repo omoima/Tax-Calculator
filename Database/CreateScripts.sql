@@ -4,8 +4,8 @@ CREATE TABLE age_threshold (
     TaxFree FLOAT NOT NULL -- Amount of tax free income for age group
 );
 
-CREATE TABLE Percentage (
-    PercentageID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE Brackets (
+    BracketID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     Threshold FLOAT NOT NULL, -- Max amount of income at the tax rate
     Percent FLOAT NOT NULL -- Tax rate as decimal (i.e. 0.10 for 10%)
 );
