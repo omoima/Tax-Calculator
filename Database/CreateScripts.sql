@@ -7,6 +7,7 @@ CREATE TABLE age_threshold (
 CREATE TABLE Brackets (
     BracketID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     Threshold FLOAT NOT NULL, -- Max amount of income at the tax rate
+	Minimum FLOAT NOT NULL, -- (Minimum) taxed to taxpayer 
     Percent FLOAT NOT NULL -- Tax rate as decimal (i.e. 0.10 for 10%)
 );
 
