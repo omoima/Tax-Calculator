@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "IaOSVXw/ZFbtkGHV/4NNLBBYTII+srKV8oPNfaMQ6MvdFhkaSrDUJHHonuO6b/et9y/7a1zLh58wRMWUHYICpg==",
+  "dgSpecHash": "yLqbslZZwpgWwMDoT/rmM0INBIpPwXl7irsUyrvgbz4mI1QZ/KF/89y2z/6zZRynf4FNwBKHtvTojLpu7F0RAg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bbdnet2854\\Documents\\Grad Program\\C# Fundamentals\\Project\\Tax-Calculator\\Code\\TaxCalculator\\TaxCalculator.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\bbdnet2790\\Desktop\\TaxCalculator\\Tax-Calculator\\Code\\TaxCalculator\\TaxCalculator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bbdnet2790\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\bbdnet2790\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\bbdnet2790\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\bbdnet2790\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
   "logs": []
 }
