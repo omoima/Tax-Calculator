@@ -29,6 +29,9 @@ namespace TaxCalculator.Models
                     ageRecord.Age = reader.GetInt32(1);
                     ageRecord.MinimumYearlySalary = reader.GetDecimal(2);
                 }
+                cmd.Connection.Close();
+                conn.Close();
+                reader.Close();
             }
             return ageRecord;
         }
@@ -36,7 +39,7 @@ namespace TaxCalculator.Models
         public static List<TaxPercentage> getTaxRates(decimal taxableIncome)
         {
             List<TaxPercentage> rates = new List<TaxPercentage>();
-            string query = @"SELECT BracketID, Threshold, [Percent] FROM Brackets WHERE Threshold <= " + taxableIncome.ToString().Replace(',', '.') + ";";
+            string query = @"SELECT BracketID, Threshold, TaxRate FROM Brackets WHERE Threshold <= " + taxableIncome.ToString().Replace(',', '.') + ";";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -53,6 +56,9 @@ namespace TaxCalculator.Models
 
                     rates.Add(taxPercentage);
                 }
+                cmd.Connection.Close();
+                conn.Close();
+                reader.Close();
             }
             return rates;
         }
