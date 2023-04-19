@@ -7,7 +7,7 @@ namespace TaxCalculator.Models
 {
   public partial class TaxPayer
   {
-    public float YearlySalary { get; set; }
+    public decimal YearlySalary { get; set; }
     public List<Deduction> YearlyDeductions { get; set; }
   }
 }

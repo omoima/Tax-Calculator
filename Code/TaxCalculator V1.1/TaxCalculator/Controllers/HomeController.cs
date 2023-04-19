@@ -20,13 +20,13 @@ namespace TaxCalculator.Controllers
             return View();
         }
 
-        public IActionResult BasicTaxResults(int age = 0, int yearlySalary = 0) 
+        public IActionResult BasicTaxResults(int age = 0, decimal yearlySalary = 0) 
         {
 
             TaxPayer taxPayer123 = new TaxPayer
             {
                 Age = age,
-                YearlySalary = (float)yearlySalary,
+                YearlySalary = yearlySalary,
                 YearlyDeductions = new List<Deduction>()
             };
 
@@ -38,30 +38,34 @@ namespace TaxCalculator.Controllers
         }
 
         //to be moved to model potentially
-        public double CalculateTax(double totalIncome, int ageGroup)
+        public decimal CalculateTax(decimal totalIncome, int ageGroup)
         {
-            double taxableIncome;
+            AgeThreshold taxFree = DBController.getTaxFree(ageGroup);
+            decimal taxableIncome = totalIncome - taxFree.MinimumYearlySalary;
             //Replace this switch with model values for Tax Thresholds for Age groups
-            switch (ageGroup)
-            {
-                case 1:
-                    taxableIncome = totalIncome - 148217;
-                    break;
-
-                case 2:
-                    taxableIncome = totalIncome - 165689;
-                    break;
-
-                default:
-                    taxableIncome = totalIncome - 95750;
-                    break;
-            }
             if (taxableIncome <= 0)
             {
                 return 0;
             }
-            //Replace this with actual tax calculations based on model values
-            return taxableIncome * 18 / 100;
+
+            List < TaxPercentage > taxRates = DBController.getTaxRates(taxableIncome);
+
+            decimal totalTax = 0;
+
+            foreach (TaxPercentage tp in taxRates )
+            {
+                if (taxableIncome > tp.SalaryThreshold)
+                {
+                    totalTax += tp.TaxPercent * tp.SalaryThreshold;
+                    taxableIncome -= tp.SalaryThreshold;
+                }
+                else
+                {
+                    totalTax += taxableIncome * tp.TaxPercent;
+                }
+            }
+
+            return totalTax;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

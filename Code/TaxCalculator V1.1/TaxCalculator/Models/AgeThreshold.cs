@@ -7,9 +7,9 @@ namespace TaxCalculator.Models
 {
   public class AgeThreshold
   {
-    public string ID { get; set; }
-    public int Age { get; set; }
-    public int MinimumYearlySalary { get; set; }
+    public int ID { get; set; } = -1;
+    public int Age { get; set; } = -1;
+    public decimal MinimumYearlySalary { get; set; } = 0;
     public AgeThreshold()
     {
 
