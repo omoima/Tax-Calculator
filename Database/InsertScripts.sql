@@ -2,7 +2,7 @@
 INSERT INTO age_threshold (Age, TaxFree) VALUES 
 (65, 95750),
 (75, 148217),
-(2,147,483,647, 165689); -- INT MAX
+(2147483647, 165689); -- INT MAX
 
 -- Tax Rates
 INSERT INTO Brackets (Threshold, TaxRate) VALUES
