@@ -8,8 +8,8 @@ namespace TaxCalculator.Models
   public class TaxPercentage
   {
     public int ID { get; set; }
-    public int SalaryThreshold { get; set; }
-    public float TaxPercent { get; set; }
+    public decimal SalaryThreshold { get; set; }
+    public decimal TaxPercent { get; set; }
     public TaxPercentage()
     {
 
