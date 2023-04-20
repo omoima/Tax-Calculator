@@ -39,26 +39,44 @@ namespace TaxCalculator.Models
         public static List<TaxPercentage> getTaxRates(decimal taxableIncome)
         {
             List<TaxPercentage> rates = new List<TaxPercentage>();
-            string query = @"SELECT BracketID, Threshold, TaxRate FROM Brackets WHERE Threshold <= " + taxableIncome.ToString().Replace(',', '.') + ";";
+            string queryLess = @"SELECT BracketID, Threshold, TaxRate FROM Brackets WHERE Threshold <= " + taxableIncome.ToString().Replace(',', '.') + ";";
+            string queryMore = @"SELECT TOP (1) BracketID, Threshold, TaxRate FROM Brackets WHERE Threshold > " + taxableIncome.ToString().Replace(',', '.') + ";";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Connection.Open();
-                var reader = cmd.ExecuteReader();
-                while (reader.Read())
+                SqlCommand cmdLess = new SqlCommand(queryLess, conn);
+                SqlCommand cmdMore = new SqlCommand(queryMore, conn);
+                cmdLess.Connection.Open();
+                var readerLess = cmdLess.ExecuteReader();
+                while (readerLess.Read())
                 {
                     TaxPercentage taxPercentage = new()
                     {
-                        ID = reader.GetInt32(0),
-                        SalaryThreshold = reader.GetDecimal(1),
-                        TaxPercent = reader.GetDecimal(2)
+                        ID = readerLess.GetInt32(0),
+                        SalaryThreshold = readerLess.GetDecimal(1),
+                        TaxPercent = readerLess.GetDecimal(2)
                     };
 
                     rates.Add(taxPercentage);
                 }
-                cmd.Connection.Close();
+                cmdLess.Connection.Close();
+
+                cmdMore.Connection.Open();
+                var readerMore = cmdMore.ExecuteReader();
+                if (readerMore.Read())
+                {
+                    TaxPercentage taxPercentage = new()
+                    {
+                        ID = readerMore.GetInt32(0),
+                        SalaryThreshold = readerMore.GetDecimal(1),
+                        TaxPercent = readerMore.GetDecimal(2)
+                    };
+
+                    rates.Add(taxPercentage);
+                }
+                cmdLess.Connection.Close();
+
                 conn.Close();
-                reader.Close();
+                readerMore.Close();
             }
             return rates;
         }
