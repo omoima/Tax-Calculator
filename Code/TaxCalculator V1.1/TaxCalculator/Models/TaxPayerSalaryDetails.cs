@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TaxCalculator.PubSub;
 
 namespace TaxCalculator.Models
 {
-  public partial class TaxPayer
+  public partial class TaxPayer : ISubsciber
   {
     public decimal YearlySalary { get; set; }
-    public List<Deduction> YearlyDeductions { get; set; }
+    public Dictionary<string, decimal> YearlyDeductions { get; set; }
+
+    public void HandleDeduction(string name, decimal amount) {
+      YearlyDeductions.Add(name, amount);
+    }
   }
 }

@@ -1,9 +1,9 @@
 ﻿using TaxCalculator.Models;
 
-namespace TaxCalculator.Controllers
+namespace TaxCalculator.PubSub
 {
 
-    public delegate void DeductionDelegate(Deduction deduction);
+    public delegate void DeductionDelegate(string deductionType, decimal deductionValue);
 
     public interface IPublisher
     {
@@ -12,7 +12,7 @@ namespace TaxCalculator.Controllers
 
     public interface ISubsciber
     {
-        void Display(Deduction deduction);
+        void HandleDeduction(string deductionType, decimal deductionValue);
     }
     public class Publisher : IPublisher
     {
@@ -23,21 +23,12 @@ namespace TaxCalculator.Controllers
             _deductionEvent += deductionHandler;
         }
 
-        public void Publish(Deduction deduction)
+        public void Publish(string deductionType, decimal deductionValue)
         {
             if(_deductionEvent != null)
             {
-                _deductionEvent(deduction);
+                _deductionEvent(deductionType, deductionValue);
             }
-        }
-
-    }
-
-    public class DisplaySubscriber : ISubsciber
-    {
-        public void Display(Deduction deduction)
-        {
-            Console.WriteLine("Subscriber has received a deduction");
         }
 
     }

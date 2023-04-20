@@ -3,17 +3,28 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
 using System.Xml.Linq;
 using TaxCalculator.Models;
+using TaxCalculator.PubSub;
 
 namespace TaxCalculator.Controllers
 {
     public class HomeController : Controller
     {
+        private Publisher deductionPublisher;
+        private TaxPayer user;
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-        }
+            deductionPublisher = new Publisher();
+            user = new TaxPayer
+            {
+              Age = 0,
+              YearlySalary = 0,
+              YearlyDeductions = new Dictionary<string, decimal>()
+            };
+            deductionPublisher.Subscribe(user.HandleDeduction);
+    }
 
         public IActionResult Index()
         { 
@@ -23,18 +34,18 @@ namespace TaxCalculator.Controllers
         public IActionResult BasicTaxResults(int age = 0, decimal yearlySalary = 0) 
         {
 
-            TaxPayer taxPayer123 = new TaxPayer
-            {
-                Age = age,
-                YearlySalary = yearlySalary,
-                YearlyDeductions = new List<Deduction>()
-            };
+            user.Age = age;
+            user.YearlySalary = yearlySalary;
 
             int ageGroup = 3;
 
-            ViewData["PITAmount"] = "R" + CalculateTax(taxPayer123.YearlySalary, ageGroup);
+            ViewData["PITAmount"] = "R" + CalculateTax(user.YearlySalary, ageGroup);
             
             return View();
+        }
+
+        public void PublishDeduction(string deductionType, decimal deductionValue) { 
+            deductionPublisher.Publish(deductionType, deductionValue);
         }
 
         //to be moved to model potentially
