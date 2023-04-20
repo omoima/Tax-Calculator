@@ -13,3 +13,7 @@ INSERT INTO Brackets (Threshold, TaxRate) VALUES
 (857900, 0.39),
 (1817000, 0.41),
 (99999999999999999999999999999999, 0.45); -- 10^(38-5) - 1
+
+INSERT INTO Deductions (DeductionDescription, DeductionRateMax, DeductionAmountMax, DeductionRate) VALUES
+('Donations', 0.10, -1, 1),
+('Retirement fund', 0.275, 350000, 1)
