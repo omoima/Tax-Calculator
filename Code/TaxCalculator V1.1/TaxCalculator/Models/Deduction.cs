@@ -7,10 +7,11 @@ namespace TaxCalculator.Models
 {
   public class Deduction
   {
-    public int ID { get; set; }
+    public int DeductionID { get; set; }
     public string DeductionDescription { get; set; }
-    public float DeductionRate { get; set; }
-    public int DeductionMax { get; set; }
+    public decimal DeductionRateMax { get; set; }
+    public decimal DeductionAmountMax { get; set; }
+    public decimal DeductionRate { get; set; }
     public Deduction()
     {
 
