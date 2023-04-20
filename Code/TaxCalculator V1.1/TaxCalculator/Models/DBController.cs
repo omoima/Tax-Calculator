@@ -81,5 +81,36 @@ namespace TaxCalculator.Models
             return rates;
         }
 
+        public static Dictionary<string, Deduction> getDeductions()
+        {
+            Dictionary<string, Deduction> deductions = new Dictionary<string, Deduction>();
+
+            string query = @"SELECT DeductionID, DeductionDescription, DeductionRateMax, DeductionAmountMax, DeductionRate FROM Deduction;";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Deduction deduction = new()
+                    {
+                        DeductionID = reader.GetInt32(0),
+                        DeductionDescription = reader.GetString(1),
+                        DeductionRateMax = reader.GetDecimal(2),
+                        DeductionAmountMax = reader.GetDecimal(3),
+                        DeductionRate = reader.GetDecimal(4)
+                    };
+                    deductions.Add(deduction.DeductionDescription, deduction); 
+                }
+                cmd.Connection.Close();
+                conn.Close();
+                reader.Close();
+            }
+
+            return deductions;
+        }
+
     }
 }
