@@ -27,7 +27,8 @@ GO
 CREATE TABLE Deduction (
     DeductionID INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
     DeductionDescription VARCHAR(255) NOT NULL, -- Type of deduction, i.e. Medical Aid
-    DeductionRate DECIMAL(10, 5) NOT NULL, -- Rate of deduction as decimal
-    DeductionMax DECIMAL(38, 5) NOT NULL -- Maximum monetary deduction
+    DeductionRateMax DECIMAL(10, 5) NOT NULL, -- Rate of deduction as decimal
+    DeductionAmountMax DECIMAL(38, 5) NOT NULL, -- Maximum monetary deduction
+    DeductionRate DECIMAL(10, 5) NOT NULL -- Amount of lump sum applicable for deduction
 );
 GO
