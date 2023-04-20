@@ -11,7 +11,12 @@
     <hr />
 
     <form asp-action="BasicTaxResults" method="post">
-        
+        <p>Select Deductables</p>
+        @Html.DropDownList("Deductable",
+        ViewBag.Deductables,
+        "Select Deductable",
+        new {@class = "form-control"})
+
         <p>Input age</p>
         <div class="form-group">
             <input asp-for="Age" class="form-control" />
