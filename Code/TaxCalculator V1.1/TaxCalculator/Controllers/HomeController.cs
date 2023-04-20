@@ -51,13 +51,15 @@ namespace TaxCalculator.Controllers
             List < TaxPercentage > taxRates = DBController.getTaxRates(taxableIncome);
 
             decimal totalTax = 0;
+            decimal prevThreshold = 0;
 
             foreach (TaxPercentage tp in taxRates )
             {
-                if (taxableIncome > tp.SalaryThreshold)
+                if (taxableIncome > (tp.SalaryThreshold - prevThreshold))
                 {
-                    totalTax += tp.TaxPercent * tp.SalaryThreshold;
-                    taxableIncome -= tp.SalaryThreshold;
+                    totalTax += tp.TaxPercent * (tp.SalaryThreshold - prevThreshold);
+                    taxableIncome -= (tp.SalaryThreshold - prevThreshold);
+                    prevThreshold = tp.SalaryThreshold;
                 }
                 else
                 {
