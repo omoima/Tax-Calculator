@@ -13,7 +13,6 @@ namespace TaxCalculator.Models
 
     public void HandleDeduction(string name, decimal amount)
     {
-        YearlyDeductions.Add(name, amount);
         if (amount > 0)
         {
            YearlyDeductions.Add(name, amount);
