@@ -30,22 +30,11 @@ namespace TaxCalculator.Controllers
 
         public IActionResult Index()
         {
-            //ViewBag.Deductables = PopulateDeductableDropDown();
             return View();
         }
 
         public IActionResult BasicTaxResults(HomeViewModel taxPayer)
         {
-
-            /*            var deductables = GetAllDeductables();
-                        var model = new HomeViewModel();
-                        model.DeductionSelectList = new List<SelectListItem>();
-
-                        *//*      deductables.Select(deducatble =>
-                            model.DeductionSelectList.Add(new SelectListItem { Text = deducatble.DeductionDescription, Value = deducatble.DeductionID }))*//*
-
-                        deductables.Select(deducatble => model.DeductionSelectList.Add(new SelectListItem { Text = deducatble.DeductionDescription, Value = deducatble.DeductionID.ToString() }));
-                        ViewBag.DeductionSelectList = model.DeductionSelectList;*/
 
             user.Age = taxPayer.Age;
             user.YearlySalary = taxPayer.YearlySalary;
@@ -61,12 +50,10 @@ namespace TaxCalculator.Controllers
             deductionPublisher.Publish(deductionType, deductionValue);
         }
 
-        //to be moved to model potentially
         public decimal CalculateTax(TaxPayer details)
         {
             AgeThreshold taxFree = DBController.getTaxFree(details.Age);
             decimal taxableIncome = details.YearlySalary - taxFree.MinimumYearlySalary;
-            //Replace this switch with model values for Tax Thresholds for Age groups
             if (taxableIncome <= 0)
             {
                 return 0;

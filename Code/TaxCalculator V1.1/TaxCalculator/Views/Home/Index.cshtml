@@ -8,20 +8,7 @@
     <h1 class="display-4">Tax Calculator</h1>
 
     <hr />
-
     <form asp-action="BasicTaxResults" method="post">
-
-        @*        <p>Select Deductables</p>
-        @Html.DropDownList("Deductable",
-        ViewBag.Deductables,
-        "Select Deductable",
-        new {@class = "form-control"})*@
-
-        @*     <div>
-        <label>Select Deducatbles</label>
-        <select asp-items="DeductionSelectList">
-        </select>
-        </div>*@
 
         <h3>Deductions</h3>
 
@@ -39,13 +26,11 @@
         <p>Input age</p>
         <div class="form-group">
             <input asp-for="Age" class="form-control" />
-            @*<span asp-validation-for="Age" class="text-danger"></span>*@
         </div>
 
         <p>Input Yearly Income ( before tax ) </p>
         <div class="form-group">
             <input asp-for="YearlySalary" class="form-control" />
-            @*<span asp-validation-for="Age" class="text-danger"></span>*@
         </div>
 
         <div class="form-group">
