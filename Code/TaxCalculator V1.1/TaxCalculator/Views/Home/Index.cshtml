@@ -1,4 +1,4 @@
-﻿@model TaxCalculator.Models.TaxPayer
+﻿@model TaxCalculator.Models.HomeViewModel
 
 @{
     ViewData["Title"] = "Home Page";
@@ -7,16 +7,35 @@
 <div class="text-center">
     <h1 class="display-4">Tax Calculator</h1>
 
-
     <hr />
 
     <form asp-action="BasicTaxResults" method="post">
-        <p>Select Deductables</p>
+
+        @*        <p>Select Deductables</p>
         @Html.DropDownList("Deductable",
         ViewBag.Deductables,
         "Select Deductable",
-        new {@class = "form-control"})
+        new {@class = "form-control"})*@
 
+        @*     <div>
+        <label>Select Deducatbles</label>
+        <select asp-items="DeductionSelectList">
+        </select>
+        </div>*@
+
+        <h3>Deductions</h3>
+
+        <p>Retirement Fund</p>
+        <div class="form-group">
+            <input asp-for="RetirementDeduction" class="form-control" />
+        </div>
+
+        <p>Donations</p>
+        <div class="form-group">
+            <input asp-for="DonationDeduction" class="form-control" />
+        </div>
+
+        <h3>Age & Salary </h3>
         <p>Input age</p>
         <div class="form-group">
             <input asp-for="Age" class="form-control" />
@@ -27,11 +46,11 @@
         <div class="form-group">
             <input asp-for="YearlySalary" class="form-control" />
             @*<span asp-validation-for="Age" class="text-danger"></span>*@
-       </div>
-        
-       <div class="form-group">
+        </div>
+
+        <div class="form-group">
             <input type="submit" value="Save" class="btn btn-primary" />
         </div>
-     </form>
+    </form>
 
 </div>
