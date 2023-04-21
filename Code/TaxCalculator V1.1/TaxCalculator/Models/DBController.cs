@@ -17,13 +17,14 @@ namespace TaxCalculator.Models
         public static AgeThreshold getTaxFree(int age)
         {
             AgeThreshold ageRecord = new AgeThreshold();
-            string query = @"SELECT TOP (1) AgeID, Age, TaxFree FROM age_threshold WHERE Age >= " + age.ToString() + " ORDER BY Age ASC;";
+            string query = "SELECT TOP (1) AgeID, Age, TaxFree FROM age_threshold WHERE Age >= @age ORDER BY Age ASC;";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@age", age);
                 cmd.Connection.Open();
                 var reader = cmd.ExecuteReader();
-                if(reader.Read())
+                if (reader.Read())
                 {
                     ageRecord.ID = reader.GetInt32(0);
                     ageRecord.Age = reader.GetInt32(1);
@@ -34,6 +35,7 @@ namespace TaxCalculator.Models
                 reader.Close();
             }
             return ageRecord;
+
         }
 
         public static List<TaxPercentage> getTaxRates(decimal taxableIncome)

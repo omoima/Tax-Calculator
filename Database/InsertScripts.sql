@@ -1,8 +1,8 @@
 -- Tax free incomes
 INSERT INTO age_threshold (Age, TaxFree) VALUES 
-(65, 95750),
-(75, 148217),
-(2147483647, 165689); -- INT MAX
+(1, 95750),
+(65, 148217),
+(75, 165689);
 
 -- Tax Rates
 INSERT INTO Brackets (Threshold, TaxRate) VALUES
@@ -12,7 +12,7 @@ INSERT INTO Brackets (Threshold, TaxRate) VALUES
 (512800, 0.36),
 (673000, 0.39),
 (857900, 0.41),
-(1817000, 0.45);
+(1817000, 0.45);	
 
 INSERT INTO Deductions (DeductionDescription, DeductionRateMax, DeductionAmountMax, DeductionRate) VALUES
 ('Donations', 0.10, -1, 1),
