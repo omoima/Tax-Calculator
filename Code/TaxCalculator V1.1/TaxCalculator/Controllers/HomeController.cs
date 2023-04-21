@@ -6,6 +6,7 @@ using TaxCalculator.Models;
 using TaxCalculator.PubSub;
 using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using TaxCalculator.Database;
 
 namespace TaxCalculator.Controllers
 {
