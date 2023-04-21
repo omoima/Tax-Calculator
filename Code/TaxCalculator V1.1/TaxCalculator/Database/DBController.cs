@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
+using TaxCalculator.Models;
 using System.Runtime.InteropServices;
 
-namespace TaxCalculator.Models
+namespace TaxCalculator.Database
 {
     public class DBController
     {
