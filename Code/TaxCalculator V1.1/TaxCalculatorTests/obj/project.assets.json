@@ -780,7 +780,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "MSTest.TestFramework": "3.0.2",
           "System.Data.SqlClient": "4.8.5"
         },
         "compile": {
@@ -2766,39 +2765,34 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bbdnet2793\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\bbdnet2790\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bbdnet2793\\Documents\\Grad\\level_ups\\CSharp\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculatorTests\\TaxCalculatorTests.csproj",
+      "projectUniqueName": "C:\\Users\\bbdnet2790\\Videos\\TaxCalc\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculatorTests\\TaxCalculatorTests.csproj",
       "projectName": "TaxCalculatorTests",
-      "projectPath": "C:\\Users\\bbdnet2793\\Documents\\Grad\\level_ups\\CSharp\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculatorTests\\TaxCalculatorTests.csproj",
-      "packagesPath": "C:\\Users\\bbdnet2793\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bbdnet2793\\Documents\\Grad\\level_ups\\CSharp\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculatorTests\\obj\\",
+      "projectPath": "C:\\Users\\bbdnet2790\\Videos\\TaxCalc\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculatorTests\\TaxCalculatorTests.csproj",
+      "packagesPath": "C:\\Users\\bbdnet2790\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bbdnet2790\\Videos\\TaxCalc\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculatorTests\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\bbdnet2793\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\bbdnet2790\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://gitlab.com/api/v4/projects/43007845/packages/nuget/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\bbdnet2793\\Documents\\Grad\\level_ups\\CSharp\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculator\\TaxCalculator.csproj": {
-              "projectPath": "C:\\Users\\bbdnet2793\\Documents\\Grad\\level_ups\\CSharp\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculator\\TaxCalculator.csproj"
+            "C:\\Users\\bbdnet2790\\Videos\\TaxCalc\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculator\\TaxCalculator.csproj": {
+              "projectPath": "C:\\Users\\bbdnet2790\\Videos\\TaxCalc\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculator\\TaxCalculator.csproj"
             }
           }
         }
@@ -2846,7 +2840,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

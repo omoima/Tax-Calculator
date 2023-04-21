@@ -470,27 +470,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\quicd001\\.nuget\\packages\\": {}
+    "C:\\Users\\bbdnet2790\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\quicd001\\Documents\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculator\\TaxCalculator.csproj",
+      "projectUniqueName": "C:\\Users\\bbdnet2790\\Videos\\TaxCalc\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculator\\TaxCalculator.csproj",
       "projectName": "TaxCalculator",
-      "projectPath": "C:\\Users\\quicd001\\Documents\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculator\\TaxCalculator.csproj",
-      "packagesPath": "C:\\Users\\quicd001\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\quicd001\\Documents\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculator\\obj\\",
+      "projectPath": "C:\\Users\\bbdnet2790\\Videos\\TaxCalc\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculator\\TaxCalculator.csproj",
+      "packagesPath": "C:\\Users\\bbdnet2790\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bbdnet2790\\Videos\\TaxCalc\\Tax-Calculator\\Code\\TaxCalculator V1.1\\TaxCalculator\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\quicd001\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bbdnet2790\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://gitlab.com/api/v4/projects/43007845/packages/nuget/index.json": {}
       },
       "frameworks": {
         "net6.0": {
@@ -532,7 +532,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

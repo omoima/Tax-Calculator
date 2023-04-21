@@ -7,7 +7,7 @@ namespace TaxCalculator.Models
 {
     public class DBController
     {
-        private static string connectionString = "Server=localhost\\SQLEXPRESS;Database=Tax;Trusted_Connection=True;";
+        private static string connectionString = "Server=localhost\\SQLEXPRESS01;Database=Tax;Trusted_Connection=True;";
 
         public DBController()
         {

@@ -126,7 +126,7 @@ namespace TaxCalculator.Controllers
         }
       }
 
-      return totalTax;
+      return Math.Round(totalTax, 2);
     }
 
 
