@@ -17,34 +17,37 @@ namespace TaxCalculator.Models
         public static AgeThreshold getTaxFree(int age)
         {
             AgeThreshold ageRecord = new AgeThreshold();
-            string query = @"SELECT TOP (1) AgeID, Age, TaxFree FROM age_threshold WHERE Age >= " + age.ToString() + " ORDER BY Age ASC;";
+            string query = @"SELECT TOP (1) AgeID, Age, TaxFree FROM age_threshold WHERE Age >= @Age ORDER BY Age ASC;";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Connection.Open();
+                cmd.Parameters.AddWithValue("@Age", age);
+                conn.Open();
                 var reader = cmd.ExecuteReader();
-                if(reader.Read())
+                if (reader.Read())
                 {
                     ageRecord.ID = reader.GetInt32(0);
                     ageRecord.Age = reader.GetInt32(1);
                     ageRecord.MinimumYearlySalary = reader.GetDecimal(2);
                 }
-                cmd.Connection.Close();
                 conn.Close();
                 reader.Close();
             }
             return ageRecord;
+
         }
 
         public static List<TaxPercentage> getTaxRates(decimal taxableIncome)
         {
             List<TaxPercentage> rates = new List<TaxPercentage>();
-            string queryLess = @"SELECT BracketID, Threshold, TaxRate FROM Brackets WHERE Threshold <= " + taxableIncome.ToString().Replace(',', '.') + ";";
-            string queryMore = @"SELECT TOP (1) BracketID, Threshold, TaxRate FROM Brackets WHERE Threshold > " + taxableIncome.ToString().Replace(',', '.') + ";";
+            string queryLess = @"SELECT BracketID, Threshold, TaxRate FROM Brackets WHERE Threshold <= @taxableIncome";
+            string queryMore = @"SELECT TOP (1) BracketID, Threshold, TaxRate FROM Brackets WHERE Threshold > @taxableIncome";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand cmdLess = new SqlCommand(queryLess, conn);
                 SqlCommand cmdMore = new SqlCommand(queryMore, conn);
+                cmdLess.Parameters.AddWithValue("@taxableIncome", taxableIncome);
+                cmdMore.Parameters.AddWithValue("@taxableIncome", taxableIncome);
                 cmdLess.Connection.Open();
                 var readerLess = cmdLess.ExecuteReader();
                 while (readerLess.Read())
@@ -73,12 +76,14 @@ namespace TaxCalculator.Models
 
                     rates.Add(taxPercentage);
                 }
-                cmdLess.Connection.Close();
+                cmdMore.Connection.Close();
 
                 conn.Close();
+                readerLess.Close();
                 readerMore.Close();
             }
             return rates;
+
         }
 
         public static Dictionary<string, Deduction> getDeductions()
