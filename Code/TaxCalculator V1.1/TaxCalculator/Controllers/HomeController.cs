@@ -30,18 +30,27 @@ namespace TaxCalculator.Controllers
 
     public IActionResult Index()
     {
-      ViewBag.Deductables = PopulateDeductableDropDown();
+      //ViewBag.Deductables = PopulateDeductableDropDown();
       return View();
     }
 
-    public IActionResult BasicTaxResults(int age = 0, decimal yearlySalary = 0)
+    public IActionResult BasicTaxResults(HomeViewModel taxPayer)
     {
 
-      user.Age = age;
-      user.YearlySalary = yearlySalary;
+/*            var deductables = GetAllDeductables();
+            var model = new HomeViewModel();
+            model.DeductionSelectList = new List<SelectListItem>();
 
-      int ageGroup = 3;
+            *//*      deductables.Select(deducatble =>
+                model.DeductionSelectList.Add(new SelectListItem { Text = deducatble.DeductionDescription, Value = deducatble.DeductionID }))*//*
 
+            deductables.Select(deducatble => model.DeductionSelectList.Add(new SelectListItem { Text = deducatble.DeductionDescription, Value = deducatble.DeductionID.ToString() }));
+            ViewBag.DeductionSelectList = model.DeductionSelectList;*/
+
+      user.Age = taxPayer.Age;
+      user.YearlySalary = taxPayer.YearlySalary;
+      user.HandleDeduction("Retirement fund", taxPayer.RetirementDeduction);
+      user.HandleDeduction("Donations", taxPayer.DonationDeduction);
       ViewData["PITAmount"] = "R" + CalculateTax(user);
 
       return View();

@@ -12,7 +12,10 @@ namespace TaxCalculator.Models
     public Dictionary<string, decimal> YearlyDeductions { get; set; }
 
     public void HandleDeduction(string name, decimal amount) {
+      if(amount > 0)
+      { 
       YearlyDeductions.Add(name, amount);
+      }
     }
   }
 }
